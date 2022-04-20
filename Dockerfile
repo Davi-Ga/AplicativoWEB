@@ -1,8 +1,12 @@
-FROM python:3.9
+FROM python:3.8.10
+
+# RUN apt update && apt install libcairo2-dev cloud-init -y
 
 WORKDIR /app
 
 COPY ./requirements.txt /app/requirements.txt
+
+RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
