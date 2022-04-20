@@ -6,10 +6,21 @@ services:
     build: .
     command: "uvicorn main:app --host 0.0.0.0 --port 80 --reload"
     container_name: fastAPI
-    
     volumes:
       - ./app:/app
+    networks:
+      - default
 
-  ngnix:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: fastapi_nginx
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - fastapi
+    networks:
+      - default
+    ports:
+      - 80:80
     
 
