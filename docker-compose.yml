@@ -34,6 +34,7 @@ services:
     image: mongo
     container_name: mongodb_web
     restart: unless-stopped
+    command: mongod --auth
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongouser
       MONGO_INITDB_ROOT_PASSWORD: 1234
