@@ -6,17 +6,12 @@ services:
     build: .
     command: "uvicorn main:app --host 0.0.0.0 --port 80 --reload"
     container_name: fastAPI
-    environment:
-      MONGODB_DATABASE: fastapidb
-      MONGODB_USERNAME: fastapiuser
-      MONGODB_PASSWORD: 1234
-      MONGODB_HOSTNAME: mongodb
     volumes:
       - ./app:/app
     networks:
       - default
     depends_on:
-      - mongodb
+      - db
 
   nginx:
     image: nginx:stable-alpine
@@ -30,23 +25,22 @@ services:
     ports:
       - 80:80
   
-  mongodb:
-    image: mongo
-    container_name: mongodb_web
-    restart: unless-stopped
-    command: mongod --auth
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: mongouser
-      MONGO_INITDB_ROOT_PASSWORD: 1234
-      MONGO_INITDB_DATABASE: fastapidb
-      MONGODB_DATA_DIR: /data/db
-      MONDODB_LOG_DIR: /dev/null
+  db:
+    image: phdcoder/postgresbr
+    restart: always
     volumes:
-      - fastapiw:/data/db
+      - fastapiw:/var/lib/postgresql/data/pgdata
+      - ./initdb:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: fastapiweb
+      POSTGRES_DB: progweb
+      POSTGRES_PASSWORD: web1
+      PGDATA: /var/lib/postgresql/data/pgdata
+      LANG: pt_BR.utf8
     ports:
-      - 27017:27017
-    networks:
-      - default
+      - "5455:5432"
+
+
 
 volumes:
   fastapiw:
