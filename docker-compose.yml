@@ -6,6 +6,11 @@ services:
     build: .
     command: "uvicorn main:app --host 0.0.0.0 --port 80 --reload"
     container_name: fastAPI
+    environment:
+      MONGODB_DATABASE: fastapidb
+      MONGODB_USERNAME: fastapiuser
+      MONGODB_PASSWORD: 1234
+      MONGODB_HOSTNAME: mongodb
     volumes:
       - ./app:/app
     networks:
@@ -27,23 +32,22 @@ services:
   
   mongodb:
     image: mongo
+    container_name: mongodb_web
     restart: unless-stopped
-    container_name: mongodbweb
-    env_file:
-      - .env
     environment:
-      MONGO_INITDB_ROOT_USERNAME: $MONGO_USERNAME
-      MONGO_INITDB_ROOT_PASSWORD: $MONGO_PASSWORD
-      MONGO_INITDB_DATABASE: $MONGO_DATABASE
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: 1234
+      MONGO_INITDB_DATABASE: fastapidb
     volumes:
-      - fastapidb:/data/db
+      - fastapiw:/data/db
     ports:
       - 27017:27017
     networks:
       - default
 
-  volumes:
-    fastapidb
+volumes:
+  fastapiw:
+    external: true
 
 
     
