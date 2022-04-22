@@ -1,10 +1,28 @@
 fastapi==0.75.2
+uvicorn==0.17.6
+
+#Template
 Jinja2==3.1.1
 pydantic==1.9.0
-uvicorn==0.17.6
+
+#Support
 starlette
+
+#Database
 psycopg2
 sqlalchemy
+
+#for static files
+aiofiles
+
+#Loading environment variables
+python-dotenv
+
+#Databases gives asyncio support for a range of databases.
+databases
+databases[postgres]
+asyncpg
+aiosqlite
 
 # dev
 pytest
