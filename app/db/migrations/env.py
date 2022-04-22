@@ -5,6 +5,7 @@ from sqlalchemy import engine_from_config, pool
 
 from logging.config import fileConfig
 import logging
+#migration 
 
 # we're appending the app directory to our path here so that we can import config easily
 sys.path.append(str(pathlib.Path(__file__).resolve().parents[3]))
