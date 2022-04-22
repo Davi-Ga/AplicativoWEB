@@ -10,8 +10,8 @@ load_dotenv(dotenv_path=env_path)
 
 class Settings:
     #App settings
-    PROJECT_NAME: str = "Agencia"
-    PROJECT_VERSION: str = "1.0.0"
+    PROJECT_NAME: str = "Agencia PW"
+    PROJECT_VERSION: str = "alpha"
     
     #Data settings
     USE_SQLITE_DB: str = os.getenv("USE_SQLITE_DB")
