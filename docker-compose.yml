@@ -6,6 +6,8 @@ services:
     build: .
     command: "uvicorn main:app --host 0.0.0.0 --port 80 --reload"
     container_name: fastAPI
+    env_file:
+      - .env
     volumes:
       - ./app:/app
     networks:
@@ -26,21 +28,27 @@ services:
       - 80:80
   
   db:
-    image: phdcoder/postgresbr
-    restart: always
-    volumes:
-      - fastapiw:/var/lib/postgresql/data/pgdata
-      - ./initdb:/docker-entrypoint-initdb.d
+    image: postgres:12.4-alpine
+    container_name: postgresfastapi
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: fastapiweb
-      POSTGRES_DB: progweb
-      POSTGRES_PASSWORD: web1
-      PGDATA: /var/lib/postgresql/data/pgdata
-      LANG: pt_BR.utf8
+      POSTGRES_PASSWORD: $DATABASE_PASS
+      POSTGRES_USER: $DATABASE_USER
+      POSTGRES_DB: $DATABASE_NAME
     ports:
       - "5455:5432"
 
-
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "example@example.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadmin1234"
+    ports:
+      - "15432:80"
+    depends_on:
+      - postgres
 
 volumes:
   fastapiw:
