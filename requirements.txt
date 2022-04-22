@@ -11,6 +11,7 @@ starlette
 #Database
 psycopg2
 sqlalchemy
+alembic
 
 #for static files
 aiofiles
