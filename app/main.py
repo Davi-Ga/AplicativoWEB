@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from core.config import settings
+from dotenv import load_dotenv
 
 app = FastAPI(title=settings.PROJECT_NAME,version=settings.PROJECT_VERSION)
     
