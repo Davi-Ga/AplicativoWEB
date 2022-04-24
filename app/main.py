@@ -7,20 +7,17 @@ from fastapi.templating import Jinja2Templates
 from core.config import settings
 from dotenv import load_dotenv
 
-app = FastAPI(title=settings.PROJECT_NAME,version=settings.PROJECT_VERSION)
-    
-app.mount("/static", StaticFiles(directory="static"), name="static")
+from apis.route_homepage import general_pages_router
 
-templates = Jinja2Templates(directory="templates")
 
-@app.get("/")
-def read_root():
-    return {"localhost/1"}
+def include_router(app):
+	app.include_router(general_pages_router)
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
 
-@app.get("/{id}", response_class=HTMLResponse)
-async def read_item(request: Request, id: str):
-    return templates.TemplateResponse("item.html", {"request": request, "id": id})
+def start_application():
+	app = FastAPI(title=settings.PROJECT_NAME,version=settings.PROJECT_VERSION)
+	include_router(app)
+	return app 
+
+
+app = start_application()
