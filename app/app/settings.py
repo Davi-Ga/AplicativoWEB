@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'banco.apps.BancoConfig'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': str(os.getenv('POSTGRES_DB')),
+        'NAME': str(os.getenv('POSTGRES_NAME')),
         'USER': str(os.getenv('POSTGRES_USER')),
         'PASSWORD': str(os.getenv('POSTGRES_PASSWORD')),
         'HOST': str(os.getenv('POSTGRES_SERVER')),
