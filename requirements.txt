@@ -1,30 +1,4 @@
-fastapi==0.75.2
-uvicorn==0.17.6
-
-#Template
-Jinja2==3.1.1
-pydantic==1.9.0
-
-#Support
-starlette
-
-#Database
-psycopg2
-sqlalchemy
-alembic
-
-#for static files
-aiofiles
-
-#Loading environment variables
+Django>=3.0,<4.0
+psycopg2>=2.8
+gunicorn==20.1.0
 python-dotenv
-
-#Databases gives asyncio support for a range of databases.
-databases
-databases[postgres]
-asyncpg
-aiosqlite
-
-# dev
-pytest
-requests
