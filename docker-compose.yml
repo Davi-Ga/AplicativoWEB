@@ -2,34 +2,32 @@ version: '3.8'
 
 services:
 
-  fastapi:
+  django:
     build: .
-    command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 80 --reload"
-    container_name: fastAPI
+    container_name: webdjango
+    command: "gunicorn app.wsgi:application --bind 0.0.0.0:8000 --reload"
     env_file:
       - .env
     volumes:
-      - ./app:/app
-    networks:
-      - default
+      - ./app:/app/
+    ports:
+      - "3000:8000"
     depends_on:
       - db
 
   nginx:
     image: nginx:stable-alpine
-    container_name: fastapi_nginx
+    container_name: nginx
+    restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/conf.d
     depends_on:
-      - fastapi
-    networks:
-      - default
-    ports:
-      - 80:80
+      - django
+
   
   db:
     image: postgres:12.4-alpine
-    container_name: postgresfastapi
+    container_name: postgresdjango
     restart: always
     env_file:
       - .env
@@ -40,24 +38,12 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - fastapiweb:/var/lib/postgresql/data
-
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    restart: unless-stopped
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
-      PGADMIN_DEFAULT_PASSWORD: "admin"
-    ports:
-      - 5050:80
-    depends_on:
-      - db
+      - postgres-data:/var/lib/postgresql/data
     
 volumes:
-  fastapiweb:
+  postgres-data:
     external: true
+
 
 
     
