@@ -7,8 +7,8 @@ from sqlalchemy import String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-class Banco(Base):
-    __tablename__ = "Banco"
+class Bank(Base):
+    __tablename__ = "Bank"
     id = Column(Integer, primary_key=True, index=True, notnull=True)
     nome = Column(String, unique=False, nullable=False, notnull=True)
-    numero = Column(String, nullable=False, unique=False, index=True)
+    numero = Column(String, nullable=False, unique=False, index=True, notnull=True)
