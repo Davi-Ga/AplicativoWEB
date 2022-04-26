@@ -22,12 +22,10 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('banco/', include('banco.urls')),
     path('admin/', admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('',include('banco.urls')),
+]
 
 #Add URL maps to redirect the base URL to our application
 
-urlpatterns += [
-    path('', RedirectView.as_view(url='/banco/')),
-]
+
