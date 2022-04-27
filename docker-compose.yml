@@ -2,14 +2,14 @@ version: '3.8'
 
 services:
 
-  django:
+  web:
     build: .
-    container_name: webdjango
+    container_name: flask
     command: "gunicorn app.wsgi:application --bind 0.0.0.0:8000 --reload"
     env_file:
       - .env
     volumes:
-      - ./app:/app/
+      - ./src:/src/
     ports:
       - "8000:8000"
     depends_on:
