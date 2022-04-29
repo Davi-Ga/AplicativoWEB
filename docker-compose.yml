@@ -12,7 +12,8 @@ services:
     volumes:
       - ./src:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   nginx:
     image: nginx:stable-alpine
@@ -37,6 +38,11 @@ services:
       POSTGRES_DB: $POSTGRES_DB
     volumes:
       - postgres-flask:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U $POSTGRES_USER
+      interval: 2s
+      timeout: 3s
+      retries: 40
     
 volumes:
   postgres-flask:
