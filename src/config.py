@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from app import app
+import app
 
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
