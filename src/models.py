@@ -9,13 +9,13 @@ TIPO_PHONE=[
 class Agencia(db.Model):
     __tablename__='Agencia'
 
-    id=db.Column(db.Integer, primary_key=True,null=False,autoincrement=True)
+    id=db.Column(db.Integer,primary_key=True,null=False,autoincrement=True)
     id_banco=db.Column(db.String(200),null=False)
     endereco=db.Column(db.String(200))
     tipo=db.Column(db.Integer,choice=TIPO_PHONE)
     fone=db.Column(db.String(200))
-    tipo1=db.Column(db.Integer,choice=TIPO_PHONE)
-    fone1=db.Column(db.String(200))
+    tipo1=db.Column(db.Integer,choice=TIPO_PHONE,nullable=True)
+    fone1=db.Column(db.String(200),nullable=True)
     agencia=db.Column(db.String(200))
     nome_agencia=db.Column(db.String(200))
     
