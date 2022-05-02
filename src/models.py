@@ -13,9 +13,9 @@ class Agencia(db.Model):
     id_banco=db.Column(db.String(200),null=False)
     endereco=db.Column(db.String(200))
     tipo=db.Column(db.Integer,choice=TIPO_PHONE)
-    fone=db.Column(db.String(200))
+    fone=db.Column(db.BigInteger)
     tipo1=db.Column(db.Integer,choice=TIPO_PHONE,nullable=True)
-    fone1=db.Column(db.String(200),nullable=True)
+    fone1=db.Column(db.BigInteger,nullable=True)
     agencia=db.Column(db.String(200))
     nome_agencia=db.Column(db.String(200))
     
