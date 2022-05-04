@@ -5,7 +5,7 @@ services:
   flaskwb:
     build: .
     container_name: flaskweb
-    command: "gunicorn app:app --bind 0.0.0.0:8000 --reload"
+    command: "gunicorn run:app --bind 0.0.0.0:8000 --reload"
     restart: unless-stopped
     env_file:
       - .env
