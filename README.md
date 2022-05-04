@@ -1,2 +1,2 @@
 # AplicativoWeb
-Teste de programação web
+App Django
