@@ -9,7 +9,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./app:/app/
+      - ./app:/app
+      - /app/static:/static
    
     depends_on:
       - db
@@ -20,6 +21,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - /app/static:/static
     ports:
       - "8000:8000"
     depends_on:
