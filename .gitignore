@@ -10,4 +10,5 @@ media
 *.bak
 
 #
+.deepsource.toml
 
