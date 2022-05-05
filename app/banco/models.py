@@ -2,12 +2,12 @@ from django.db import models
 
 
 TIPO_PHONE =[
-    ('0','Fixo'),
-    ('1','Celular'),
+    ('True','Fixo'),
+    ('False','Celular'),
 ]
 
 class Banco(models.Model):
-    id = models.AutoField(primary_key=True,serialize=True)
+    
     nome = models.CharField(max_length=250,null=False)
     numero = models.CharField(max_length=250)
     
@@ -18,13 +18,13 @@ class Banco(models.Model):
 
 
 class Agencia(models.Model):
-    id = models.AutoField(primary_key=True,null=False,auto_created=True)
+    
     id_banco = models.ForeignKey(Banco,on_delete=models.CASCADE)
     endereco = models.CharField(max_length=250)
-    fone = models.BigIntegerField(max_length=11,unique=True)
-    tipo = models.IntegerField(choices=TIPO_PHONE,max_length=1)
-    fone1 = models.BigIntegerField(blank=True,max_length=11)
-    tipo1 = models.IntegerField(choices=TIPO_PHONE,max_length=1)
+    fone = models.CharField(max_length=11,unique=True)
+    tipo = models.BooleanField(choices=TIPO_PHONE)
+    fone1 = models.BigIntegerField(max_length=11,blank=True)
+    tipo1 = models.BooleanField(choices=TIPO_PHONE,blank=True)
     agencia = models.CharField(max_length=250)
     nome_agencia = models.CharField(max_length=250)
     
