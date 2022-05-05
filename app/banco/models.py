@@ -19,12 +19,12 @@ class Banco(models.Model):
 
 class Agencia(models.Model):
     id = models.AutoField(primary_key=True,null=False,auto_created=True)
-    id_banco = models.ForeignKey(id.Banco,on_delete=models.CASCADE)
+    id_banco = models.ForeignKey(Banco,on_delete=models.CASCADE)
     endereco = models.CharField(max_length=250)
     fone = models.BigIntegerField(max_length=11,unique=True)
-    tipo = models.IntegerField(choices=TIPO_PHONE,max_length=1,min_length=0)
+    tipo = models.IntegerField(choices=TIPO_PHONE,max_length=1)
     fone1 = models.BigIntegerField(blank=True,max_length=11)
-    tipo1 = models.IntegerField(choices=TIPO_PHONE,max_length=1,min_length=0)
+    tipo1 = models.IntegerField(choices=TIPO_PHONE,max_length=1)
     agencia = models.CharField(max_length=250)
     nome_agencia = models.CharField(max_length=250)
     
