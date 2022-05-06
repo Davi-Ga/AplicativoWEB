@@ -3,7 +3,7 @@
 *.log
 *.pot
 *.pyc
-__pycache__
+__pycache__/
 media
 
 #Backup files
@@ -15,7 +15,6 @@ media
 
 #Distribution/packaging
 .Python build/
-develop-eggs/
 dist/
 downloads/
 eggs/
@@ -26,11 +25,10 @@ parts/
 sdist/
 var/
 wheels/
-*.egg-info
-.installed.cfg
 
 
 .deepsource.toml
 
-
+#More
 app/static/admin
+
