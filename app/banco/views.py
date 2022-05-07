@@ -10,6 +10,9 @@ from banco.models import Agencia
 class PaginaInicial(TemplateView):
     template_name = 'banco/home.html'
     
+class Adicionar(TemplateView):
+    template_name = 'banco/create.html'
+    
 
 def adicionarAgencia(request):
     form = AgenciaForm()
