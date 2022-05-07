@@ -18,12 +18,13 @@ from django.urls import path,include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-
+from banco import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('criar/',include('banco.urls')),
+    path('', views.PaginaInicial.as_view(), name="home"),
+    path('adicionar/',include('banco.urls'))
 ]
 
 #Add URL maps to redirect the base URL to our application
