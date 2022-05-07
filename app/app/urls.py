@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('banco.urls')),
+    path('criar/',include('banco.urls')),
 ]
 
 #Add URL maps to redirect the base URL to our application
