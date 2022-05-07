@@ -2,8 +2,8 @@ from django.db import models
 
 
 TIPO_PHONE =[
-    ('True','Fixo'),
-    ('False','Celular'),
+    ('1','Fixo'),
+    ('0','Celular'),
 ]
 
 class Banco(models.Model):
@@ -11,10 +11,8 @@ class Banco(models.Model):
     nome = models.CharField(max_length=250,null=False)
     numero = models.CharField(max_length=250)
     
-    def __init__(self,nome,numero):
-        self.id=id
-        self.nome=nome
-        self.numero=numero
+    def __str__(self):
+        return self.nome
 
 
 class Agencia(models.Model):
@@ -22,23 +20,14 @@ class Agencia(models.Model):
     id_banco = models.ForeignKey(Banco,on_delete=models.CASCADE)
     endereco = models.CharField(max_length=250)
     fone = models.CharField(max_length=11,unique=True)
-    tipo = models.BooleanField(choices=TIPO_PHONE)
-    fone1 = models.BigIntegerField(max_length=11,blank=True)
-    tipo1 = models.BooleanField(choices=TIPO_PHONE,blank=True)
+    tipo = models.IntegerField(choices=TIPO_PHONE)
+    fone1 = models.CharField(max_length=11,blank=True)
+    tipo1 = models.IntegerField(choices=TIPO_PHONE,blank=True)
     agencia = models.CharField(max_length=250)
     nome_agencia = models.CharField(max_length=250)
     
-    def __init__(self, id_banco,endereco,tipo,fone,tipo1,fone1,agencia,nome_agencia):
-        self.id=id
-        self.id_banco=id_banco
-        self.endereco=endereco
-        self.tipo=tipo
-        self.fone=fone
-        self.tipo1=tipo1
-        self.fone1=fone1
-        self.agencia=agencia
-        self.nome_agencia=nome_agencia
-
+    def __str__(self):
+        return self.nome_agencia
     
 
     
