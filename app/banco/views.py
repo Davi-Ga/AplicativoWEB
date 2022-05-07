@@ -3,8 +3,25 @@ from re import template
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+from banco.forms import BancoForm
+from banco.forms import AgenciaForm
 from banco.models import Agencia
 
 class PaginaInicial(TemplateView):
     template_name = 'banco/home.html'
+    
+
+def adicionarAgencia(request):
+    form = AgenciaForm()
+    context={
+        'form': form
+    }
+    return render(request,'banco/agencia_create.html',context=context)
+    
+def adicionarBanco(request):
+    form = BancoForm()
+    context={
+        'form': form
+    }
+    return render(request,'banco/banco_create.html',context=context)
     
