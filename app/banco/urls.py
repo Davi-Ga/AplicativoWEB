@@ -1,10 +1,13 @@
+from django import views
 from django.urls import path
 
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import PaginaInicial
+from banco import views
 
 urlpatterns = [
-    path('', PaginaInicial.as_view(), name='index'),
+    path('', views.PaginaInicial.as_view(), name="index"),
+    path('agencia/',views.adicionarAgencia, name="adicionarAgencia" ),
+    path('banco/',views.adicionarBanco, name="adicionarBanco" ),
 ]
