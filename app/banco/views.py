@@ -11,7 +11,7 @@ class PaginaInicial(TemplateView):
     template_name = 'banco/home.html'
     
 class Adicionar(TemplateView):
-    template_name = 'banco/create.html'
+    template_name = 'banco/add.html'
     
 
 def adicionarAgencia(request):
@@ -19,12 +19,12 @@ def adicionarAgencia(request):
     context={
         'form': form
     }
-    return render(request,'banco/agencia_create.html',context=context)
+    return render(request,'banco/agencia_add.html',context=context)
     
 def adicionarBanco(request):
     form = BancoForm()
     context={
         'form': form
     }
-    return render(request,'banco/banco_create.html',context=context)
+    return render(request,'banco/banco_add.html',context=context)
     
