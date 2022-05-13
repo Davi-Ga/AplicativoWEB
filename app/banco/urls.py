@@ -6,8 +6,9 @@ from django.conf.urls.static import static
 
 from banco import views
 
+
 urlpatterns = [
-    path('',views.Adicionar.as_view()),
-    path('agencia/',views.adicionarAgencia ),
-    path('banco/',views.adicionarBanco),
+    path('',views.Adicionar.as_view(),name='adicionar'),
+    path('agencia/',views.adicionarAgencia,name='adicionarAgencia' ),
+    path('banco/',views.adicionarBanco,name='adicionarBanco'),
 ]
