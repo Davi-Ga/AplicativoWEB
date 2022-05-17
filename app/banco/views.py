@@ -35,9 +35,21 @@ def adicionarAgencia(request):
             
     
 def adicionarBanco(request):
-    form = BancoForm()
-    context={
-        'form': form
-    }
-    return render(request,'banco/banco_add.html',context=context)
+    if request.method == "GET":
+        form = BancoForm()
+        context={
+            'form': form
+        }
+        return render(request,'banco/banco_add.html',context=context)
+    
+    else:
+        form = BancoForm(request.POST)
+        if form.is_valid():
+            banco = form.save()
+            form = BancoForm()
+            
+            context={
+            'form': form
+        }
+        return render(request,'banco/banco_add.html',context=context)
     
