@@ -12,6 +12,9 @@ class Banco(models.Model):
     nome = models.CharField(max_length=250,null=False)
     numero = models.CharField(max_length=250)
     
+    class Meta:
+        db_table = "Banco" 
+    
     def __str__(self):
         return self.nome
 
@@ -28,8 +31,11 @@ class Agencia(models.Model):
     agencia = models.CharField(max_length=250)
     nome_agencia = models.CharField(max_length=250)
     
+    class Meta:
+        db_table = "Agencia"
+    
     def __str__(self):
-        return self.nome_agencia
+        return self.nome
     
 
     
