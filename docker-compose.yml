@@ -6,7 +6,7 @@ services:
     build: .
     container_name: web
     restart: always
-    command: sh -c "python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn app.wsgi:application -b 0.0.0.0:8000"
+    command: sh -c "python manage.py collectstatic --no-input && gunicorn app.wsgi:application -b 0.0.0.0:8000"
     env_file:
       - .env
     volumes:
@@ -49,10 +49,28 @@ services:
       interval: 2s
       timeout: 3s
       retries: 10
-    
+
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "example@example.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadmin1234"
+    ports:
+      - "15432:80"
+    depends_on:
+      - db
+  
+
+
+
 volumes:
   postgres-data:
     external: true
+    
+
 
 
 
