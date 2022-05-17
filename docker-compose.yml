@@ -50,22 +50,6 @@ services:
       timeout: 3s
       retries: 10
 
-  pgadmin-compose:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    env_file:
-      - .env
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "example@example.com"
-      PGADMIN_DEFAULT_PASSWORD: "pgadmin1234"
-    ports:
-      - "15432:80"
-    depends_on:
-      - db
-  
-
-
-
 volumes:
   postgres-data:
     external: true
