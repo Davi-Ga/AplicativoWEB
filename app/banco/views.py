@@ -15,11 +15,24 @@ class Adicionar(TemplateView):
     
 
 def adicionarAgencia(request):
-    form = AgenciaForm()
-    context={
+    if request.method == "GET":
+        form = AgenciaForm()
+        context={
+            'form': form
+        }
+        return render(request,'banco/agencia_add.html',context=context)
+    
+    else:
+        form= AgenciaForm(request.POST)
+        if form.is_valid():
+            agencia = form.save()
+            form = AgenciaForm()
+            
+        context={
         'form': form
-    }
-    return render(request,'banco/agencia_add.html',context=context)
+        }
+        return render(request,'banco/agencia_add.html',context=context)
+            
     
 def adicionarBanco(request):
     form = BancoForm()
