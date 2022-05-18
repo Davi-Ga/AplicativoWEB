@@ -11,14 +11,15 @@
     {% include 'partials/header.html' %}
 </head>
 <body>
-    <h1>Adicione um banco</h1>
-    <form action="." method="post">
-        {% csrf_token %}
-        
+    <div id="main">
+        <h1>Adicione um banco</h1>
+        <form action="." method="post">
+            {% csrf_token %}
             {{ form.as_p }}
-       
-        <input type="submit" class="btn btn-primary btn-sm" value="Salvar"></input>
-    </form>
+           
+            <input type="submit" class="btn btn-primary btn-sm" value="Salvar"></input>
+        </form>
+    </div>
     
 </body>
 </html>
