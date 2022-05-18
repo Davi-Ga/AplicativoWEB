@@ -4,16 +4,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"> <!-- Referenciar o bootstrap -->
 
 <header>
-    <nav id="menu-h">
-        <ul>
-            <li><a href={% url 'home' %}><i class="bi bi-house"></i> Início </a></li>
 
-            <li><a href={% url 'adicionar' %}>  Adicionar</a></li>
-            
-            <li><a href="#">Listar</a></li>
-            
-        </ul>
-    </nav>
+    <nav id="menu-h" class="nav">
+        <a class="nav-link" href={% url 'home' %}>Inicio</a>
+        <a class="nav-link" href={% url 'adicionar' %}>Adicionar</a>
+        <a class="nav-link" href="#">Listar</a>
+      </nav>
 </header>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
