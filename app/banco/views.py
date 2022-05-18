@@ -23,7 +23,7 @@ def adicionarAgencia(request):
         return render(request,'banco/agencia_add.html',context=context)
     
     else:
-        form= AgenciaForm(request.POST)
+        form=AgenciaForm(request.POST)
         if form.is_valid():
             agencia = form.save()
             form = AgenciaForm()
