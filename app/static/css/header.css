@@ -13,26 +13,13 @@
     background-color: rgb(37, 37, 39);
 }
 
-#menu-h ul {
-    max-width: 450px;
-    list-style: none;
-    padding: 0;
-}
-
-#menu-h ul li {
-    display: inline;
-}
-
-#menu-h ul li a {
+#menu-h a{
     color: #FFF;
-    padding: 20px;
-    display: inline-block;
-    text-decoration: none;
-    transition: background .4s;
+    
 }
 
-#menu-h ul li a:hover {
-    background-color: blueviolet;
+#menu-h a:hover{
+    background-color: #8c52ff;
 }
 
 #main {
