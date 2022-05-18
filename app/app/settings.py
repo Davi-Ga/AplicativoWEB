@@ -31,7 +31,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','[::1]','*']
+ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*']
 
 
 # Application definition
@@ -129,8 +129,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-DEBUG = True
-DEBUG_PROPAGATE_EXCEPTIONS = True
 
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
