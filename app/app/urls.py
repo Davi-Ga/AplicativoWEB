@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import RedirectView
+from django.contrib.staticfiles.views import serve
+from django.views.decorators.cache import never_cache
 from django.conf import settings
 from django.conf.urls.static import static
 from banco import views
@@ -24,9 +26,9 @@ from banco import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.PaginaInicial.as_view(), name="home"),
-    path('adicionar/',include('banco.urls'))
-]
+    path('adicionar/',include('banco.urls')),
+]+static(settings.STATIC_URL, view=never_cache(serve))
 
-#Add URL maps to redirect the base URL to our application
+
 
 
