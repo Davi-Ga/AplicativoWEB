@@ -8,8 +8,8 @@ TIPO_PHONE =[
 
 class Banco(models.Model):
     
-    nome = models.CharField(max_length=250,null=False)
-    numero = models.CharField(max_length=250,null=False)
+    nome = models.CharField(max_length=250,null=False,unique=True)
+    numero = models.CharField(max_length=250,null=False,unique=True)
     
     class Meta:
         db_table = "Banco" 
