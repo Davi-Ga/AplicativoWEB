@@ -4,9 +4,12 @@ from banco.models import Agencia
 from banco.models import Banco
 
 class BancoForm(forms.ModelForm):
+    nome = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control","placeholder": "Nome do Banco"}))
+    numero = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control","placeholder": "Nome do Banco"}))
+    
     class Meta:
         model = Banco
-        fields = '__all__'
+        fields = ['nome','numero']
 
 class AgenciaForm(forms.ModelForm):
     class Meta:
