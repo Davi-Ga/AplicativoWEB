@@ -26,7 +26,7 @@ from bank import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.PaginaInicial.as_view(), name="home"),
-    path('adicionar/',include('bank.urls')),
+    path('add/',include('bank.urls')),
 ]+static(settings.STATIC_URL, view=never_cache(serve))
 
 
