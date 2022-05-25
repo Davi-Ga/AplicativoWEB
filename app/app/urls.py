@@ -20,13 +20,13 @@ from django.contrib.staticfiles.views import serve
 from django.views.decorators.cache import never_cache
 from django.conf import settings
 from django.conf.urls.static import static
-from bank import views
+from banco import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.PaginaInicial.as_view(), name="home"),
-    path('add/',include('bank.urls')),
+    path('', views.PaginaInicial.as_view(), name="paginaInicial"),
+    path('adicionar/',include('banco.urls')),
 ]+static(settings.STATIC_URL, view=never_cache(serve))
 
 
