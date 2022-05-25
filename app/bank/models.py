@@ -23,8 +23,8 @@ class Agency(models.Model):
     
     bank_id = models.ForeignKey('Bank',on_delete=models.CASCADE)
     address = models.CharField(max_length=250,null=False)
-    phone = models.BigIntegerField(unique=True,null=False)
-    phonetype = models.IntegerField(choices=TYPE_PHONE,null=False)
+    phone = models.BigIntegerField(unique=True,blank=True)
+    phonetype = models.IntegerField(choices=TYPE_PHONE,blank=True)
     phone1 = models.BigIntegerField(blank=True)
     phonetype1 = models.IntegerField(choices=TYPE_PHONE,blank=True)
     agency = models.CharField(max_length=250,null=False)
