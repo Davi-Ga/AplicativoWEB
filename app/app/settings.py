@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bank.apps.BankConfig',
+    'banco.apps.BancoConfig',
     'crispy_forms',
     "crispy_bootstrap5",
 
@@ -65,7 +65,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR),'app/bank/templates'],
+        'DIRS': [os.path.join(BASE_DIR),'app/banco/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
