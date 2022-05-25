@@ -14,4 +14,4 @@ class BankForm(forms.ModelForm):
 class AgencyForm(forms.ModelForm):
     class Meta:
         model = Agency
-        fields = '__all__'
+        fields = ['bank_id','adress','phone']
