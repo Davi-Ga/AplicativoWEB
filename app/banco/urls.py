@@ -8,7 +8,10 @@ from banco import views
 
 
 urlpatterns = [
-    path('',views.Adicionar.as_view(),name='adicionar'),
+    
     path('agencia/',views.adicionarAgencia,name='adicionarAgencia' ),
     path('banco/',views.adicionarBanco,name='adicionarBanco'),
+    
+    path('agencia/',views.AgenciaList.as_view(),name='listarAgencia'),
+    # path('banco/',views.adicionarBanco,name='listarBanco'),
 ]
