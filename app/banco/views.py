@@ -16,6 +16,7 @@ class Adicionar(TemplateView):
 class AgenciaList(ListView):
     model = Agencia
     queryset= Agencia.objects.all()
+    template_name = 'agencia_list.html'
     
 
 def adicionarAgencia(request):
