@@ -5,7 +5,7 @@
 }
 
 #menu-h ul {
-    max-width: 450px;
+    max-width: 28.125rem;
     list-style: none;
     padding: 0;
 }
@@ -15,15 +15,22 @@
 }
 
 #menu-h ul li a {
-    color: #FFF;
-    padding: 20px;
+    color: #72737e;
+    padding: 1.25rem;
     display: inline-block;
     text-decoration: none;
     transition: background .4s;
 }
 
 
-#menu-h a:hover {
-    background-color: #8c52ff;
+#navbarNavDarkDropdown a:hover {
+    color: #5ADBDB
 }
 
+
+.navbar-brand .bi-house{
+    color: #72737e;
+}
+.navbar-brand .bi-house:hover{
+    color: #5ADBDB
+}
