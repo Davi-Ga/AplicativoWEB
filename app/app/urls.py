@@ -27,7 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.PaginaInicial.as_view(), name="paginaInicial"),
     path('adicionar/',include('banco.urls')),
-    path('listar/',include('banco.urls')),
+    path('listar/agencia/',views.AgenciaList.as_view(),name='listarAgencia'),
+    path('listar/banco/',views.adicionarBanco,name='listarBanco'),
 ]+static(settings.STATIC_URL, view=never_cache(serve))
 
 
