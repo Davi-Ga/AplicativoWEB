@@ -10,10 +10,9 @@ from banco.models import Agencia
 class PaginaInicial(TemplateView):
     template_name = 'banco/home.html'
     
-class AgenciaList(ListView):
-    model = Agencia
-    queryset= Agencia.objects.all()
-    template_name = 'agencia_list.html'
+def listarAgencia(request):
+    agencias= Agencia.objects.all()
+    return (request,'banco/agencia_list.html',{'Agencias':agencias})
     
 
 def adicionarAgencia(request):
