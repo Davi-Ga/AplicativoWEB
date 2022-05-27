@@ -1,18 +1,16 @@
 from django.views.generic import ListView
-from re import template
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from banco.forms import BancoForm
 from banco.forms import AgenciaForm
 from banco.models import Agencia
+from banco.models import Banco
 
 class PaginaInicial(TemplateView):
     template_name = 'banco/home.html'
     
-def listarAgencia(request):
-    agencias= Agencia.objects.all()
-    return (request,'banco/agencia_list.html',{'Agencias':agencias})
+
     
 
 def adicionarAgencia(request):
@@ -53,4 +51,13 @@ def adicionarBanco(request):
             'form': form
         }
         return render(request,'banco/banco_adicionar.html',context=context)
+    
+def listarAgencia(request):
+    agencias= Agencia.objects.all()
+    return (request,'banco/agencia_list.html',{'Agencias':agencias})
+
+def listarBanco(request):
+    bancos=Banco.objects.all()
+    return (request,'banco/banco_list.html',{'Bancos':bancos})
+    
     
