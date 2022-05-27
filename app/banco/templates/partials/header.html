@@ -16,8 +16,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Adicionar</a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Banco</a></li>
-              <li><a class="dropdown-item" href="#">Agência</a></li>
+              <li><a class="dropdown-item" href="{% url 'adicionarBanco' %}">Banco</a></li>
+              <li><a class="dropdown-item" href="{% url 'adicionarAgencia' %}">Agência</a></li>
             </ul>
           </li>
         </ul>
@@ -26,8 +26,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Listar</a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="{% url '' %}">Banco</a></li>
-              <li><a class="dropdown-item" href="#">Agência</a></li>
+              <li><a class="dropdown-item" href="">Banco</a></li>
+              <li><a class="dropdown-item" href="{% url 'listarAgencia' %}">Agência</a></li>
             </ul>
       </div>
       
