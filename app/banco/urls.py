@@ -12,6 +12,4 @@ urlpatterns = [
     path('agencia/',views.adicionarAgencia,name='adicionarAgencia' ),
     path('banco/',views.adicionarBanco,name='adicionarBanco'),
     
-    path('agencia/',views.AgenciaList.as_view(),name='listarAgencia'),
-    # path('banco/',views.adicionarBanco,name='listarBanco'),
 ]
