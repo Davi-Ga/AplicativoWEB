@@ -8,6 +8,17 @@
     <title>Document</title>
 </head>
 <body>
+    <ul>
+        {% if bancos %}
+        
+            {% for banco in bancos %}
+                {{banco}}
+            {% endfor %}
+    </ul>
+        {% else %}
+            <p>Não há bancos registrados</p>
+        {% endif %}
+    
     
 </body>
 </html>
