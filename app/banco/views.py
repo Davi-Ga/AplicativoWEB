@@ -10,9 +10,6 @@ from banco.models import Agencia
 class PaginaInicial(TemplateView):
     template_name = 'banco/home.html'
     
-class Adicionar(TemplateView):
-    template_name = 'banco/adicionar.html'
-    
 class AgenciaList(ListView):
     model = Agencia
     queryset= Agencia.objects.all()
