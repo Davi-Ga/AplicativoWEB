@@ -34,11 +34,19 @@
                     <tr>
                         <th scope="row">{{Agencia.id}}</th>
                         <td>{{Banco.nome}}</td>
-                        <td>{{Agencia.nome}}</td>
+                        <td>{{Agencia.endereco}}</td>
+                        <td>{{Agencia.fone}}</td>
+                        <td>{{Agencia.tipo}}</td>
+                        <td>{{Agencia.fone1}}</td>
+                        <td>{{Agencia.tipo1}}</td>
+                        <td>{{Agencia.agencia}}</td>
+                        <td>{{Agencia.nome_agencia}}</td>
                     </tr>
                 {% endfor %}
+            </tbody>
+            </table>
             {% else %}
-
+                <p>Não há Agências registradas</p>
             {% endif %}
         </ul>
 
