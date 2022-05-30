@@ -54,7 +54,10 @@ def adicionarBanco(request):
     
 def listarAgencia(request):
     agencias= Agencia.objects.all()
-    return render(request,'banco/agencia_list.html',{'agencias':agencias})
+    context={
+        'agencias': agencias
+    }
+    return render(request,'banco/agencia_list.html',context=context)
 
 def listarBanco(request):
     bancos=Banco.objects.all()
