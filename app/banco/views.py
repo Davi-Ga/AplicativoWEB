@@ -47,8 +47,8 @@ def adicionarBanco(request):
             banco = form.save()
             form = BancoForm()
             
-            context={
-            'form': form
+        context={
+        'form': form
         }
         return render(request,'banco/banco_adicionar.html',context=context)
     
@@ -58,6 +58,9 @@ def listarAgencia(request):
 
 def listarBanco(request):
     bancos=Banco.objects.all()
-    return render(request,'banco/banco_list.html',{'bancos':bancos})
+    context={
+        'bancos': bancos
+        }
+    return render(request,'banco/banco_list.html',context=context)
     
     
