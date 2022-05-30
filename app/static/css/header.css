@@ -15,7 +15,7 @@
 }
 
 #menu-h ul li a {
-    color: #72737e;
+    color: #8f9094;
     padding: 1.25rem;
     display: inline-block;
     text-decoration: none;
@@ -29,7 +29,7 @@
 
 
 .navbar-brand .bi-house{
-    color: #72737e;
+    color: #8f9094;
 }
 .navbar-brand .bi-house:hover{
     color: #5ADBDB
