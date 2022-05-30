@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% include 'partials/header.html' %}
-    <title>Document</title>
-</head>
-<body>
+    <title>Banco do Narg</title>
+  </head>
+  <body>
     <ul>
-        {% if bancos %}
-        
-            {% for banco in bancos  {{banco}}%}
-               
-            {% endfor %}
+      {% if bancos %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Número</th>
+            <th scope="col">Nome</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for Banco in bancos %}
+          <tr>
+            <th scope="row">{{Banco.id}}</th>
+            <td>{{Banco.numero}}</td>
+            <td>{{Banco.nome}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </ul>
-        {% else %}
-            <p>Não há bancos registrados</p>
-        {% endif %}
-    
-    
-</body>
+    {% else %}
+    <p>Não há bancos registrados</p>
+    {% endif %}
+  </body>
 </html>
