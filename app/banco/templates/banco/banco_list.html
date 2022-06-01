@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% include 'partials/header.html' %}
-    <title>Banco do Narg</title>
-  </head>
-  <body>
+{% extends 'base.html' %}
+
+{% block content %}
 <div id="main">
   <div class="w-75 p-3" style="background-color: #fff;">
     <ul>
@@ -18,6 +11,7 @@
             <th scope="col">Id</th>
             <th scope="col">Número</th>
             <th scope="col">Nome</th>
+            <th scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -27,8 +21,7 @@
             <td>{{Banco.numero}}</td>
             <td>{{Banco.nome}}</td>
             <td>
-              <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-success"><i  Ag"></i></button>
               <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
           </td>
             
@@ -36,11 +29,11 @@
           {% endfor %}
         </tbody>
       </table>
+      {% else %}
+        <p>Não há bancos registrados</p>
+      {% endif %}
     </ul>
-    {% else %}
-    <p>Não há bancos registrados</p>
-    {% endif %}
   </div>
 </div>
-  </body>
-</html>
+
+{% endblock  %}
