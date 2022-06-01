@@ -25,10 +25,10 @@ from banco import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.PaginaInicial.as_view(), name="paginaInicial"),
+    path('', views.pagina_inicial, name="paginaInicial"),
     path('adicionar/',include('banco.urls')),
-    path('listar/banco/',views.listarBanco,name='listarBanco'),
-    path('listar/agencia/',views.listarAgencia,name='listarAgencia'),
+    path('listar/banco/',views.listar_banco,name='listarBanco'),
+    path('listar/agencia/',views.listar_agencia,name='listarAgencia'),
 ]+static(settings.STATIC_URL, view=never_cache(serve))
 
 
