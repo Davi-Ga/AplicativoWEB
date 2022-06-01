@@ -2,7 +2,6 @@
 {% load crispy_forms_tags  %}
 {% load static %}
 <!DOCTYPE html>
-    
 
 {% block content %}
     <link rel="stylesheet" href="{% static '/css/agencia_banco_add.css' %}">
@@ -12,7 +11,7 @@
     <form action="." method="post">
         {% csrf_token %}
             <div class="w-25 p-3" style="background-color: #fff;">
-            {{ form|crispy }} 
+                {{ form|crispy }} 
             </div>
         <input type="submit" class="btn btn-primary btn-sm" value="Salvar"></input>
     </form>
