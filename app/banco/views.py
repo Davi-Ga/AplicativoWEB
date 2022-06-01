@@ -7,13 +7,11 @@ from banco.forms import AgenciaForm
 from banco.models import Agencia
 from banco.models import Banco
 
-class PaginaInicial(TemplateView):
-    template_name = 'banco/home.html'
+def pagina_inicial(request):
+    return render(request,'banco/home.html')
     
-
     
-
-def adicionarAgencia(request):
+def adicionar_agencia(request):
     if request.method == "GET":
         form = AgenciaForm()
         context={
@@ -33,7 +31,7 @@ def adicionarAgencia(request):
         return render(request,'banco/agencia_adicionar.html',context=context)
             
     
-def adicionarBanco(request):
+def adicionar_banco(request):
     if request.method == "GET":
         form = BancoForm()
         context={
@@ -52,14 +50,14 @@ def adicionarBanco(request):
         }
         return render(request,'banco/banco_adicionar.html',context=context)
     
-def listarAgencia(request):
+def listar_agencia(request):
     agencias= Agencia.objects.all()
     context={
         'agencias': agencias
     }
     return render(request,'banco/agencia_list.html',context=context)
 
-def listarBanco(request):
+def listar_banco(request):
     bancos=Banco.objects.all()
     context={
         'bancos': bancos
