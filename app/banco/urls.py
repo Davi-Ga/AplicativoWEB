@@ -9,7 +9,7 @@ from banco import views
 
 urlpatterns = [
     
-    path('agencia/',views.adicionarAgencia,name='adicionarAgencia' ),
-    path('banco/',views.adicionarBanco,name='adicionarBanco'),
+    path('agencia/',views.adicionar_agencia,name='adicionarAgencia' ),
+    path('banco/',views.adicionar_banco,name='adicionarBanco'),
     
 ]
