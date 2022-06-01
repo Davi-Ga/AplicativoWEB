@@ -13,7 +13,7 @@ TYPE_PHONE =[
 class Banco(models.Model):
     
     nome = models.CharField(max_length=250,null=False,unique=True,validators=[nome_validator])
-    numero = models.CharField(max_length=250,null=False,unique=True,)
+    numero = models.CharField(max_length=250,blank=True,unique=True,)
      
     class Meta:
         db_table = "Banco" 
