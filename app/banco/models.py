@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import RegexValidator
+from .validators import nome_validator
 
 
 TYPE_PHONE =[
@@ -6,13 +8,20 @@ TYPE_PHONE =[
     ('0','Celular'),
 ]
 
+
+
 class Banco(models.Model):
     
-    nome = models.CharField(max_length=250,null=False,unique=True)
+    nome = models.CharField(max_length=250,null=False,unique=True,validators=[nome_validator])
     numero = models.CharField(max_length=250,null=False,unique=True)
     
+    
+        
+        
     class Meta:
         db_table = "Banco" 
+        
+    
     
     def __str__(self):
         
