@@ -29,7 +29,7 @@ class Agencia(models.Model):
     
     id_banco = models.ForeignKey('Banco',on_delete=models.CASCADE)
     endereco = models.CharField(max_length=250,null=False)
-    fone = models.BigIntegerField(unique=True,blank=True)
+    fone = models.BigIntegerField(unique=True,blank=True,verbose_name="Telefone")
     tipo = models.IntegerField(choices=TYPE_PHONE,blank=True)
     fone1 = models.BigIntegerField(blank=True)
     tipo1 = models.IntegerField(choices=TYPE_PHONE,blank=True)
