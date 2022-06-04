@@ -7,3 +7,5 @@ def nome_validator(value):
     else:
         return value
         
+def tamanho_numero(value):
+    if not len(value) > 11:
