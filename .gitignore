@@ -31,4 +31,4 @@ wheels/
 
 #More
 app/static/admin
-
+app/static/scss/bootstrap
