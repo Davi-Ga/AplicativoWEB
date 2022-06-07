@@ -6,3 +6,4 @@ def nome_validator(value):
         raise forms.ValidationError('Insira um nome válido')
     else:
         return value
+
