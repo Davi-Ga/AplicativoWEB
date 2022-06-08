@@ -15,12 +15,3 @@ class AgenciaForm(forms.ModelForm):
         model = Agencia
         fields = '__all__'
         
-    def algum_numero(self):
-        telefone=self.cleaned_data.get("fone")
-        telefone1=self.cleaned_data.get("fone1")
-        
-        if telefone and telefone1 == "":
-            raise forms.ValidationError("Insira algum número de telefone por favor")
-        return telefone and telefone1
-
-        
