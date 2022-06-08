@@ -3,6 +3,7 @@
 
 {% block content %}
     <div id="main">
+        
         <ul>
             {% if agencias %}
 
@@ -18,6 +19,9 @@
                     <th scope="col">Tipo1</th>
                     <th scope="col">Agência</th>
                     <th scope="col">Número Agência</th>
+                        <th>
+                            <th scope="col">Ações</th>
+                        </th>
                   </tr>
                 </thead>
             <tbody>
@@ -32,6 +36,12 @@
                         <td>{{Agencia.tipo1}}</td>
                         <td>{{Agencia.agencia}}</td>
                         <td>{{Agencia.nome_agencia}}</td>
+                        <td>
+                            <td>
+                                <button type="button" href= "{% url '' %}" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
