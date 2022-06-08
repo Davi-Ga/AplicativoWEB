@@ -1,5 +1,5 @@
 from django.views.generic import ListView
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from banco.forms import BancoForm
@@ -49,6 +49,22 @@ def adicionar_banco(request):
         'form': form
         }
         return render(request,'banco/banco_adicionar.html',context=context)
+ 
+def alterar_agencia(request,id):
+    agencias = Agencia.objects.get(id=id)
+    form = AgenciaForm(request.POST or None, instance=agencias)
+    
+    if form.is_valid:
+        form.save()
+        return redirect('listarAgencia')
+    
+    context={
+        'form': form,
+        'agencias':agencias
+    }
+    return render(request,'banco/agencia_list.html',context=context)
+
+
     
 def listar_agencia(request):
     agencias= Agencia.objects.all()
@@ -61,7 +77,7 @@ def listar_banco(request):
     bancos=Banco.objects.all()
     context={
         'bancos': bancos
-        }
+    }
     return render(request,'banco/banco_list.html',context=context)
     
     
