@@ -7,3 +7,8 @@ def nome_validator(value):
     else:
         return value
 
+def tamanho_numero(value):
+    if not len(value) == 11:
+        raise forms.ValidationError("Insira um número válido")
+    else:
+        return value
