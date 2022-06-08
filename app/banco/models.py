@@ -4,8 +4,8 @@ from .validators import nome_validator
 
 
 TYPE_PHONE =[
-    ('1','Fixo'),
-    ('0','Celular'),
+    ('0','Fixo'),
+    ('1','Celular'),
 ]
 
 
@@ -30,9 +30,9 @@ class Agencia(models.Model):
     id_banco = models.ForeignKey('Banco',on_delete=models.CASCADE)
     endereco = models.CharField(max_length=250,null=False)
     fone = models.BigIntegerField(unique=True,blank=True,verbose_name="Telefone")
-    tipo = models.IntegerField(choices=TYPE_PHONE,blank=True)
+    tipo = models.CharField(max_length=1,choices=TYPE_PHONE,blank=True)
     fone1 = models.BigIntegerField(blank=True)
-    tipo1 = models.IntegerField(choices=TYPE_PHONE,blank=True)
+    tipo1 = models.CharField(max_length=1,choices=TYPE_PHONE,blank=True)
     agencia = models.CharField(max_length=250,null=False)
     nome_agencia = models.CharField(max_length=250,null=False)
     
