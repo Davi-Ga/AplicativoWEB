@@ -6,13 +6,14 @@ from banco.forms import BancoForm
 from banco.forms import AgenciaForm
 from banco.models import Agencia
 from banco.models import Banco
+from django.core.exceptions import ObjectDoesNotExist
 
 def pagina_inicial(request):
     return render(request,'banco/home.html')
     
     
 def adicionar_agencia(request):
-    if request.method == "GET":
+    if request.method == 'GET':
         form = AgenciaForm()
         context={
             'form': form
@@ -32,7 +33,7 @@ def adicionar_agencia(request):
             
     
 def adicionar_banco(request):
-    if request.method == "GET":
+    if request.method == 'GET':
         form = BancoForm()
         context={
             'form': form
@@ -50,17 +51,20 @@ def adicionar_banco(request):
         }
         return render(request,'banco/banco_adicionar.html',context=context)
  
-def alterar_agencia(request,id):
-    agencias = Agencia.objects.get(id=id)
+def alterar_agencia(request,banco_id):
+    banco_id=int(banco_id)
+    try:
+        agencias = Agencia.objects.get(id = banco_id)
+    except Agencia.DoesNotExist:
+        return redirect('listarAgencia')
     form = AgenciaForm(request.POST or None, instance=agencias)
     
-    if form.is_valid:
+    if form.is_valid():
         form.save()
         return redirect('listarAgencia')
     
     context={
-        'form': form,
-        'agencias':agencias
+        'listar_agencia': form,
     }
     return render(request,'banco/agencia_list.html',context=context)
 
