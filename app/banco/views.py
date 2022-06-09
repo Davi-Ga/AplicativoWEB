@@ -50,26 +50,7 @@ def adicionar_banco(request):
         'form': form
         }
         return render(request,'banco/banco_adicionar.html',context=context)
- 
-def alterar_agencia(request,banco_id):
-    banco_id=int(banco_id)
-    try:
-        agencias = Agencia.objects.get(id = banco_id)
-    except Agencia.DoesNotExist:
-        return redirect('listarAgencia')
-    form = AgenciaForm(request.POST or None, instance=agencias)
-    
-    if form.is_valid():
-        form.save()
-        return redirect('listarAgencia')
-    
-    context={
-        'listar_agencia': form,
-    }
-    return render(request,'banco/agencia_list.html',context=context)
-
-
-    
+     
 def listar_agencia(request):
     agencias= Agencia.objects.all()
     context={
@@ -84,4 +65,28 @@ def listar_banco(request):
     }
     return render(request,'banco/banco_list.html',context=context)
     
+def alterar_agencia(request,agencia_id):
+    agencia_id=int(agencia_id)
+    try:
+        agencias = Agencia.objects.get(id = agencia_id)
+    except Agencia.DoesNotExist:
+        return redirect('listarAgencia')
+    form = AgenciaForm(request.POST or None, instance=agencias)
     
+    if form.is_valid():
+        form.save()
+        return redirect('listarAgencia')
+    
+    context={
+        'listar_agencia': form,
+    }
+    return render(request,'banco/agencia_list.html',context=context)
+
+def deletar_agencia(request,agencia_id):
+    agencia_id=int(agencia_id)
+    try:
+        agencias=Agencia.objects.get(id=agencia_id)
+    except Agencia.DoesNotExist:
+        return redirect('listarAgencia')
+    agencias.delete()
+    return redirect('listarAgencia')
