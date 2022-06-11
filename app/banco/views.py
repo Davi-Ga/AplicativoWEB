@@ -78,9 +78,9 @@ def alterar_agencia(request,agencia_id):
         return redirect('listarAgencia')
     
     context={
-        'listar_agencia': form,
+        'form': form,
     }
-    return render(request,'banco/agencia_list.html',context=context)
+    return render(request,'banco/agencia_adicionar.html',context=context)
 
 def deletar_agencia(agencia_id):
     agencia_id=int(agencia_id)
