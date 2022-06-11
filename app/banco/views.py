@@ -11,27 +11,9 @@ from django.core.exceptions import ObjectDoesNotExist
 def pagina_inicial(request):
     return render(request,'banco/home.html')
     
-    
-def adicionar_agencia(request):
-    if request.method == 'GET':
-        form = AgenciaForm()
-        context={
-            'form': form
-        }
-        return render(request,'banco/agencia_adicionar.html',context=context)
-    
-    else:
-        form=AgenciaForm(request.POST)
-        if form.is_valid():
-            agencia = form.save()
-            form = AgenciaForm()
-            
-        context={
-        'form': form
-        }
-        return render(request,'banco/agencia_adicionar.html',context=context)
-            
-    
+#CRUD do Banco
+
+#CREATE  
 def adicionar_banco(request):
     if request.method == 'GET':
         form = BancoForm()
@@ -43,7 +25,7 @@ def adicionar_banco(request):
     else:
         form = BancoForm(request.POST)
         if form.is_valid():
-            banco = form.save()
+            form.save()
             form = BancoForm()
             
         context={
@@ -51,13 +33,7 @@ def adicionar_banco(request):
         }
         return render(request,'banco/banco_adicionar.html',context=context)
      
-def listar_agencia(request):
-    agencias= Agencia.objects.all()
-    context={
-        'agencias': agencias
-    }
-    return render(request,'banco/agencia_list.html',context=context)
-
+#READ
 def listar_banco(request):
     bancos=Banco.objects.all()
     context={
@@ -65,6 +41,60 @@ def listar_banco(request):
     }
     return render(request,'banco/banco_list.html',context=context)
     
+#UPDATE
+def alterar_banco(request,banco_id):
+    banco_id=int(banco_id)
+    try:
+        bancos=Banco.objects.get(id=banco_id)
+    except Banco.DoesNotExist:
+        return redirect('listarBanco')
+    
+    form=BancoForm(request.POST or None, instance=bancos)
+    
+    if form.is_valid():
+        form.save()
+        
+        return redirect('listarBanco')
+    
+    context={
+        'form': form
+    }
+    return render(request,'banco/banco_list.html',context=context)
+    
+#DELETE
+    
+    
+#CRUD da Agência
+
+#CREATE
+def adicionar_agencia(request):
+    if request.method == 'GET':
+        form = AgenciaForm()
+        context={
+            'form': form
+        }
+        return render(request,'banco/agencia_adicionar.html',context=context)
+    
+    else:
+        form=AgenciaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = AgenciaForm()
+            
+        context={
+        'form': form
+        }
+        return render(request,'banco/agencia_adicionar.html',context=context)
+
+#READ
+def listar_agencia(request):
+    agencias= Agencia.objects.all()
+    context={
+        'agencias': agencias
+    }
+    return render(request,'banco/agencia_list.html',context=context)
+
+#UPDATE
 def alterar_agencia(request,agencia_id):
     agencia_id=int(agencia_id)
     try:
@@ -78,10 +108,11 @@ def alterar_agencia(request,agencia_id):
         return redirect('listarAgencia')
     
     context={
-        'form': form,
+        'form': form
     }
     return render(request,'banco/agencia_adicionar.html',context=context)
 
+#DELETE
 def deletar_agencia(agencia_id):
     agencia_id=int(agencia_id)
     try:
