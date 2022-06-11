@@ -28,6 +28,9 @@ urlpatterns = [
     path('', views.pagina_inicial, name='paginaInicial'),
     path('adicionar/',include('banco.urls')),
     path('listar/banco/',views.listar_banco,name='listarBanco'),
+    path('alterar/banco/<int:banco_id>/',views.alterar_banco,name='alterarBanco'),
+    path('deletar/banco/<int:banco_id>/',views.deletar_banco,name='deletarBanco'),
+    
     path('listar/agencia/',views.listar_agencia,name='listarAgencia'),
     path('alterar/agencia/<int:agencia_id>/',views.alterar_agencia,name='alterarAgencia'),
     path('deletar/agencia/<int:agencia_id>/',views.deletar_agencia,name='deletarAgencia'),
