@@ -29,7 +29,8 @@ urlpatterns = [
     path('adicionar/',include('banco.urls')),
     path('listar/banco/',views.listar_banco,name='listarBanco'),
     path('listar/agencia/',views.listar_agencia,name='listarAgencia'),
-    path('alterar/<int:banco_id>/',views.alterar_agencia,name='alterarAgencia'),
+    path('alterar/agencia/<int:agencia_id>/',views.alterar_agencia,name='alterarAgencia'),
+    path('deletar/agencia/<int:agencia_id>/',views.deletar_agencia,name='deletarAgencia'),
 ]+static(settings.STATIC_URL, view=never_cache(serve))
 
 
