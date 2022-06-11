@@ -4,11 +4,11 @@
 {% block content %}
     <div id="main">
         
-        <ul>
+        
             {% if agencias %}
 
             <table class="table table-hover">
-                <thead>
+                
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Banco</th>
@@ -19,12 +19,10 @@
                     <th scope="col">Tipo1</th>
                     <th scope="col">Agência</th>
                     <th scope="col">Número Agência</th>
-                        <th>
-                            <th scope="col">Ações</th>
-                        </th>
+                    <th scope="col">Ações</th>
+                        
                   </tr>
-                </thead>
-            <tbody>
+             
                 {% for Agencia in agencias %}
                     <tr>
                         <th scope="row">{{Agencia.id}}</th>
@@ -37,19 +35,19 @@
                         <td>{{Agencia.agencia}}</td>
                         <td>{{Agencia.nome_agencia}}</td>
                         <td>
-                            <td>
-                                <button type="button" href= "alterar/{{Agencia.id}}" class="btn btn-success" id="{{Agencia.id}}"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                            </td>
+                            <a  href= "{% url 'alterarAgencia' Agencia.id %}" id="{{Agencia.id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                        </td>
+                        <td>
+                            <a href= "{% url 'deletarAgencia' Agencia.id %}" id="{{Agencia.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
-            </tbody>
+         
             </table>
             {% else %}
                 <p>Não há Agências registradas</p>
             {% endif %}
-        </ul>
+        
 
     </div>
     {% endblock  %}
