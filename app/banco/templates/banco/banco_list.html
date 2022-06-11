@@ -21,8 +21,8 @@
             <td>{{Banco.numero}}</td>
             <td>{{Banco.nome}}</td>
             <td>
-              <button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
-              <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+              <a  href= "{% url 'alterarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+              <a href= "{% url 'deletarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
           </td>
             
           </tr>
