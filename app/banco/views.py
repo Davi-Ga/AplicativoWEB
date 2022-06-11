@@ -62,7 +62,8 @@ def alterar_banco(request,banco_id):
     return render(request,'banco/banco_list.html',context=context)
     
 #DELETE
-    
+def deletar_banco(banco_id):
+    banco_id=int(banco_id)  
     
 #CRUD da Agência
 
@@ -113,7 +114,7 @@ def alterar_agencia(request,agencia_id):
     return render(request,'banco/agencia_adicionar.html',context=context)
 
 #DELETE
-def deletar_agencia(agencia_id):
+def deletar_agencia(request,agencia_id):
     agencia_id=int(agencia_id)
     try:
         agencias=Agencia.objects.get(id=agencia_id)
