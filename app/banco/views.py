@@ -82,11 +82,12 @@ def alterar_agencia(request,agencia_id):
     }
     return render(request,'banco/agencia_list.html',context=context)
 
-def deletar_agencia(request,agencia_id):
+def deletar_agencia(agencia_id):
     agencia_id=int(agencia_id)
     try:
         agencias=Agencia.objects.get(id=agencia_id)
     except Agencia.DoesNotExist:
         return redirect('listarAgencia')
+        
     agencias.delete()
     return redirect('listarAgencia')
