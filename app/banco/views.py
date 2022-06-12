@@ -34,7 +34,7 @@ def adicionar_banco(request):
 #READ
 def listar_banco(request):
     bancos_list=Banco.objects.all()
-    paginator= Paginator(bancos_list,3)
+    paginator= Paginator(bancos_list,15)
     
     page=request.GET.get('page')
     
@@ -97,7 +97,12 @@ def adicionar_agencia(request):
 
 #READ
 def listar_agencia(request):
-    agencias= Agencia.objects.all()
+    agencias_list= Agencia.objects.all()
+    paginator=Paginator(agencias_list,10)
+    
+    page=request.GET.get('page')
+    
+    agencias=paginator.get_page(page)
     context={
         'agencias': agencias
     }
