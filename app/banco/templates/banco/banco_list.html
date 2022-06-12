@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static '/css/agencia_banco_list.css' %}">
+
 <div id="main">
   <div class="w-75 p-3" style="background-color: #fff;">
     <ul>
@@ -24,7 +28,6 @@
               <a  href= "{% url 'alterarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
               <a href= "{% url 'deletarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
           </td>
-            
           </tr>
           {% endfor %}
         </tbody>
@@ -33,6 +36,22 @@
         <p>Não há bancos registrados</p>
       {% endif %}
     </ul>
+    <div class="pagination">
+      <span class="step-links">
+        {% if bancos.has_previous %}
+          <a href="?page={{bancos.previous_page_number}}"> <i class="bi bi-arrow-left-circle"></i></a>
+        {% endif %}
+
+          <span class="current">
+            {{bancos.number}} de {{ bancos.paginator.num_pages}}
+          </span>
+
+        {% if bancos.has_next %}
+          <a href="?page={{bancos.next_page_number}}"> <i class="bi bi-arrow-right-circle"></i></a>
+        {% endif %}
+      </span>
+
+    </div>
   </div>
 </div>
 
