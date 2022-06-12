@@ -63,9 +63,16 @@ def alterar_banco(request,banco_id):
     return render(request,'banco/banco_adicionar.html',context=context)
     
 #DELETE
-def deletar_banco(banco_id):
+def deletar_banco(request,banco_id):
     banco_id=int(banco_id)  
     
+    try:
+        bancos=Banco.objects.get(id=banco_id)
+    except Banco.DoesNotExist:
+        return redirect('listarBanco')
+    
+    bancos.delete()
+    return redirect('listarBanco')
 #CRUD da Agência
 
 #CREATE
