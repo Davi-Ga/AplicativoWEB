@@ -51,18 +51,16 @@ def alterar_banco(request,banco_id):
         bancos=Banco.objects.get(id=banco_id)
     except Banco.DoesNotExist:
         return redirect('listarBanco')
-    
     form=BancoForm(request.POST or None, instance=bancos)
     
     if form.is_valid():
         form.save()
-        
         return redirect('listarBanco')
     
     context={
         'form': form
     }
-    return render(request,'banco/banco_list.html',context=context)
+    return render(request,'banco/banco_adicionar.html',context=context)
     
 #DELETE
 def deletar_banco(banco_id):
