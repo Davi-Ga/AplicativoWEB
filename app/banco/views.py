@@ -4,6 +4,7 @@ from banco.forms import AgenciaForm
 from banco.models import Agencia
 from banco.models import Banco
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 def pagina_inicial(request):
@@ -45,6 +46,7 @@ def listar_banco(request):
     return render(request,'banco/banco_list.html',context=context)
     
 #UPDATE
+@login_required
 def alterar_banco(request,banco_id):
     banco_id=int(banco_id)
     try:
@@ -63,6 +65,7 @@ def alterar_banco(request,banco_id):
     return render(request,'banco/banco_adicionar.html',context=context)
     
 #DELETE
+@login_required
 def deletar_banco(request,banco_id):
     banco_id=int(banco_id)  
     
@@ -109,6 +112,7 @@ def listar_agencia(request):
     return render(request,'banco/agencia_list.html',context=context)
 
 #UPDATE
+@login_required
 def alterar_agencia(request,agencia_id):
     agencia_id=int(agencia_id)
     try:
@@ -127,6 +131,7 @@ def alterar_agencia(request,agencia_id):
     return render(request,'banco/agencia_adicionar.html',context=context)
 
 #DELETE
+@login_required
 def deletar_agencia(request,agencia_id):
     agencia_id=int(agencia_id)
     try:
