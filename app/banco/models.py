@@ -2,13 +2,10 @@ from django.db import models
 from django.core.validators import RegexValidator
 from .validators import nome_validator
 
-
 TYPE_PHONE =[
     ('0','Fixo'),
     ('1','Celular'),
 ]
-
-
 
 class Banco(models.Model):
     
@@ -17,9 +14,7 @@ class Banco(models.Model):
      
     class Meta:
         db_table = "Banco" 
-        
-    
-    
+           
     def __str__(self):
         
         return self.numero+" - "+self.nome 
