@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.pagina_inicial, name='paginaInicial'),
     path('adicionar/',include('banco.urls')),
+    path('contas/', include('django.contrib.auth.urls')),
     
     path('listar/banco/',views.listar_banco,name='listarBanco'),
     path('alterar/banco/<int:banco_id>/',views.alterar_banco,name='alterarBanco'),
