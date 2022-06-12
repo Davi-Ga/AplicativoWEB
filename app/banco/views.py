@@ -1,12 +1,10 @@
-from django.views.generic import ListView
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from django.views.generic import TemplateView
 from banco.forms import BancoForm
 from banco.forms import AgenciaForm
 from banco.models import Agencia
 from banco.models import Banco
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
+
 
 def pagina_inicial(request):
     return render(request,'banco/home.html')
@@ -35,7 +33,12 @@ def adicionar_banco(request):
      
 #READ
 def listar_banco(request):
-    bancos=Banco.objects.all()
+    bancos_list=Banco.objects.all()
+    paginator= Paginator(bancos_list,3)
+    
+    page=request.GET.get('page')
+    
+    bancos=paginator.get_page(page)
     context={
         'bancos': bancos
     }
