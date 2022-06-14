@@ -27,9 +27,14 @@ class CadastroUsuarioForm(UserCreationForm):
         self.fields['password1'].widget.attrs.update({'class': 'form-control form-control-lg'})
         self.fields['password2'].widget.attrs.update({'class': 'form-control form-control-lg'})
     
-  
-  
     class Meta:
         model=User
         fields=['username','email','password1','password2']
+        help_texts={
+            'username':None,
+            'password1':None,
+            'password2':None,
+        }
+        
+
         
