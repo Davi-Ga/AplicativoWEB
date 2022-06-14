@@ -1,21 +1,36 @@
 from django.shortcuts import redirect, render
-from banco.forms import BancoForm
-from banco.forms import AgenciaForm
-from banco.models import Agencia
-from banco.models import Banco
+from banco.forms import AgenciaForm,BancoForm,CadastroUsuarioForm
+from banco.models import Agencia,Banco
 from django.core.paginator import Paginator
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
 def pagina_inicial(request):
     return render(request,'banco/home.html')
 
 def pagina_login(request):
+    
+    
    
     return render(request,'usuario/login.html')
 
 def pagina_registro(request):
-    
-    return render(request,'usuario/registro.html')
+    if request.method=='GET':
+        form = CadastroUsuarioForm()
+        context={
+            'form':form
+        }
+        return render(request,'usuario/registro.html',context=context)
+    else:
+        form = CadastroUsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form=CadastroUsuarioForm()
+            
+        context={
+            'form':form
+        }
+        return render(request,'usuario/registro.html',context=context)
     
 #CRUD do Banco
 
