@@ -31,3 +31,10 @@
 .navbar-brand .bi-house:hover{
     color: #5ADBDB
 }
+
+.navbar-brand .bi-person{
+    color: #8f9094;
+}
+.navbar-brand .bi-person:hover{
+    color: #5ADBDB
+}
