@@ -7,7 +7,7 @@
   <section id="main">
       <h1>Adicione uma agencia</h1>
       
-      <form action="." method="post">
+      <form action="." method="POST">
         {% csrf_token %}
         <div class="w-50 p-3" width='w'>
         {{ form.id_banco|as_crispy_field }}
