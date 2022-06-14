@@ -50,7 +50,7 @@ def adicionar_banco(request):
             form = BancoForm()
             
         context={
-        'form': form
+            'form': form
         }
         return render(request,'banco/banco_adicionar.html',context=context)
      
