@@ -6,9 +6,16 @@ from banco.models import Banco
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-
 def pagina_inicial(request):
     return render(request,'banco/home.html')
+
+def pagina_login(request):
+   
+    return render(request,'usuario/login.html')
+
+def pagina_registro(request):
+    
+    return render(request,'usuario/registro.html')
     
 #CRUD do Banco
 
@@ -46,7 +53,7 @@ def listar_banco(request):
     return render(request,'banco/banco_list.html',context=context)
     
 #UPDATE
-@login_required
+
 def alterar_banco(request,banco_id):
     banco_id=int(banco_id)
     try:
@@ -65,7 +72,7 @@ def alterar_banco(request,banco_id):
     return render(request,'banco/banco_adicionar.html',context=context)
     
 #DELETE
-@login_required
+
 def deletar_banco(request,banco_id):
     banco_id=int(banco_id)  
     
