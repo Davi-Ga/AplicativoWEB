@@ -7,6 +7,11 @@ TYPE_PHONE =[
     ('1','Celular'),
 ]
 
+TYPE_PERMITIONS=[
+    ('m','Moderador'),
+    ('c','Comum')
+]
+
 class Banco(models.Model):
     
     nome = models.CharField(max_length=250,null=False,unique=True,validators=[nome_validator])
@@ -23,13 +28,13 @@ class Banco(models.Model):
 class Agencia(models.Model):
     
     id_banco = models.ForeignKey('Banco',on_delete=models.CASCADE)
-    endereco = models.CharField(max_length=250,null=False)
-    fone = models.BigIntegerField(unique=True,blank=True,verbose_name="Telefone")
+    endereco = models.CharField(max_length=100,null=False)
+    fone = models.BigIntegerField(unique=True,blank=True)
     tipo = models.CharField(max_length=1,choices=TYPE_PHONE,blank=True)
     fone1 = models.BigIntegerField(blank=True)
     tipo1 = models.CharField(max_length=1,choices=TYPE_PHONE,blank=True)
-    agencia = models.CharField(max_length=250,null=False)
-    nome_agencia = models.CharField(max_length=250,null=False)
+    agencia = models.CharField(max_length=100,null=False)
+    nome_agencia = models.CharField(max_length=100,null=False)
     
     class Meta:
         db_table = "Agencia"
@@ -37,5 +42,16 @@ class Agencia(models.Model):
     def __str__(self):
         return self.nome_agencia
     
-
+# class Usuario(models.Model):
+    
+#     nome = models.CharField(max_length=100,unique=True,null=False)
+#     email = models.CharField(max_length=100,null=False,unique=True)
+#     senha = models.CharField(max_length=100,null=False)
+#     permissao = models.CharField(max_length=1,choices=TYPE_PERMITIONS,null=False)
+    
+#     class Meta:
+#         db_table = "Usuario"
+    
+#     def __str__(self):
+#         return self.nome
     
