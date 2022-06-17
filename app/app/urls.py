@@ -29,6 +29,7 @@ urlpatterns = [
     path('adicionar/',include('banco.urls')),
     path('conectar/',views.pagina_login,name='paginaLogin'),
     path('cadastrar/',views.pagina_registro,name='paginaCadastro'),
+    path('desconectar/',views.deslogar,name='paginaDesconectar'),
     
     path('listar/banco/',views.listar_banco,name='listarBanco'),
     path('alterar/banco/<int:banco_id>/',views.alterar_banco,name='alterarBanco'),
