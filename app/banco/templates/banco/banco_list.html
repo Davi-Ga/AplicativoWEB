@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static '/css/banco/agencia_banco_list.css' %}">
 
 <div id="main">
-  <div class="w-75 p-3">
+  
     <ul>
       {% if bancos %}
       <table class="table">
@@ -15,7 +15,9 @@
             <th scope="col">Id</th>
             <th scope="col">Número</th>
             <th scope="col">Nome</th>
-            <th scope="col">Ações</th>
+            {% if user.is_authenticated %}
+              <th scope="col">Ações</th>
+            {% endif %}
           </tr>
         </thead>
         <tbody>
@@ -24,10 +26,12 @@
             <th scope="row">{{Banco.id}}</th>
             <td>{{Banco.numero}}</td>
             <td>{{Banco.nome}}</td>
-            <td>
-              <a  href= "{% url 'alterarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-              <a href= "{% url 'deletarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-          </td>
+            {% if user.is_authenticated %}
+              <td>
+                <a  href= "{% url 'alterarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                <a href= "{% url 'deletarBanco' Banco.id %}" id="{{Banco.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+              </td>
+            {% endif %}
           </tr>
           {% endfor %}
         </tbody>
@@ -52,7 +56,7 @@
       </span>
 
     </div>
-  </div>
+  
 </div>
 
 {% endblock  %}
