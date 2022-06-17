@@ -1,37 +1,56 @@
 from django.shortcuts import redirect, render
+from django import forms
 from banco.forms import AgenciaForm,BancoForm,CadastroUsuarioForm
 from banco.models import Agencia,Banco
 from django.core.paginator import Paginator
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 
 def pagina_inicial(request):
     return render(request,'banco/home.html')
 
 def pagina_login(request):
-    
-    
+    if request.user.is_authenticated:
+        return redirect('paginaInicial')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password1')
+            
+            user = authenticate(request,username=username, password=password)
+            
+            if user is not None:
+                login(request,user)
+                return redirect('paginaInicial')
+            else:
+                return forms.ValidationError("Usuário ou senha estão incorretos")
+        context={
+            
+        }
+        return render(request,'usuario/login.html',context=context)
    
-    return render(request,'usuario/login.html')
+def deslogar(request):
+    logout(request) 
+    return redirect('paginaLogin')
 
 def pagina_registro(request):
-    if request.method=='GET':
-        form = CadastroUsuarioForm()
-        context={
-            'form':form
-        }
-        return render(request,'usuario/registro.html',context=context)
+    if request.user.is_authenticated:
+        return redirect('paginaInicial')
     else:
-        form = CadastroUsuarioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            form=CadastroUsuarioForm()
-            
+        form = CadastroUsuarioForm()
+        if request.method=='POST':
+            form = CadastroUsuarioForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('paginaLogin')
+                
         context={
             'form':form
         }
         return render(request,'usuario/registro.html',context=context)
-    
+
 #CRUD do Banco
 
 #CREATE  
