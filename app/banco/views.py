@@ -11,6 +11,8 @@ from django.contrib import messages
 def pagina_inicial(request):
     return render(request,'banco/home.html')
 
+
+
 def pagina_login(request):
     if request.user.is_authenticated:
         return redirect('paginaInicial')
@@ -107,7 +109,7 @@ def alterar_banco(request,banco_id):
     
 #DELETE
 
-def deletar_banco(request,banco_id):
+def deletar_banco(banco_id):
     banco_id=int(banco_id)  
     
     try:
@@ -173,7 +175,7 @@ def alterar_agencia(request,agencia_id):
 
 #DELETE
 @login_required
-def deletar_agencia(request,agencia_id):
+def deletar_agencia(agencia_id):
     agencia_id=int(agencia_id)
     try:
         agencias=Agencia.objects.get(id=agencia_id)
