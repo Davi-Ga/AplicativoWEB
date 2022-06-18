@@ -125,19 +125,23 @@ def deletar_banco(banco_id):
 def adicionar_agencia(request):
     if request.method == 'GET':
         form = AgenciaForm()
+        result= Banco.objects.all
         context={
-            'form': form
+            'form': form,
+            'bancos': result
         }
         return render(request,'banco/agencia_adicionar.html',context=context)
     
     else:
         form=AgenciaForm(request.POST)
+        result= Banco.objects.all
         if form.is_valid():
             form.save()
             form = AgenciaForm()
             
         context={
-        'form': form
+            'form': form,
+            'bancos': result
         }
         return render(request,'banco/agencia_adicionar.html',context=context)
 
