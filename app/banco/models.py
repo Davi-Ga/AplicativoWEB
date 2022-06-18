@@ -41,17 +41,8 @@ class Agencia(models.Model):
     
     def __str__(self):
         return self.nome_agencia
-    
-# class Usuario(models.Model):
-    
-#     nome = models.CharField(max_length=100,unique=True,null=False)
-#     email = models.CharField(max_length=100,null=False,unique=True)
-#     senha = models.CharField(max_length=100,null=False)
-#     permissao = models.CharField(max_length=1,choices=TYPE_PERMITIONS,null=False)
-    
-#     class Meta:
-#         db_table = "Usuario"
-    
-#     def __str__(self):
-#         return self.nome
+
+    def numero(self,*args,**kwargs):
+        fone=self.cleaned_data.get('fone')
+        fone1=self.cleaned_data.get('fone1')
     
