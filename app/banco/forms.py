@@ -18,6 +18,10 @@ class AgenciaForm(forms.ModelForm):
         model = Agencia
         fields = '__all__'
         
+    def __init__(self, *args, **kwargs):
+        super(AgenciaForm, self).__init__(*args, **kwargs)
+        self.fields['id_banco'].widget.attrs.update({'class': 'form-control'})
+        
 class CadastroUsuarioForm(UserCreationForm):
     
     def __init__(self, *args, **kwargs):
