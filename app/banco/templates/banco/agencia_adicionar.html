@@ -10,7 +10,15 @@
       <form action="." method="POST">
         {% csrf_token %}
         <div class="w-50 p-3" width='w'>
-        {{ form.id_banco|as_crispy_field }}
+          <label for="id_banco_id" class="control-label">Banco</label>
+  
+                <input class="form-control" name="banco_id" required="required" type="text" list="bancolist" />
+                <datalist id="bancolist">
+                  {% for result in bancos %}
+                    <option value="{{result.nome}}"></option>
+                  {% endfor %}
+                </datalist>
+    
           <div class="row">
             <div class="col">
               {{ form.agencia|as_crispy_field }}
