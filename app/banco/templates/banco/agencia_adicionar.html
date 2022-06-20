@@ -11,15 +11,15 @@
         {% csrf_token %}
         <div class="w-50 p-3" width='w'>
           <label for="id_banco_id" class="control-label">Banco</label>
-  
+          <div class="form-outline form-white mb-4"> 
                 <input class="form-control" name="banco_id" required="required" type="text" list="bancolist" />
                 <datalist id="bancolist">
                   {% for result in bancos %}
                     <option value="{{result.nome}}"></option>
                   {% endfor %}
                 </datalist>
-    
-          <div class="row">
+                </div>
+          <div class="row"> 
             <div class="col">
               {{ form.agencia|as_crispy_field }}
             </div>
