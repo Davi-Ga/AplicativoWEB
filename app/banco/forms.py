@@ -14,13 +14,14 @@ class BancoForm(forms.ModelForm):
         fields = '__all__'
         
 class AgenciaForm(forms.ModelForm):
+    
+    def __init__(self, *args, **kwargs):
+        super(AgenciaForm, self).__init__(*args, **kwargs)
+        self.fields['idbanco'].widget.attrs.update({'class': 'form-control'})
+        
     class Meta:
         model = Agencia
         fields = '__all__'
-        
-    def __init__(self, *args, **kwargs):
-        super(AgenciaForm, self).__init__(*args, **kwargs)
-        self.fields['id_banco'].widget.attrs.update({'class': 'form-control'})
         
 class CadastroUsuarioForm(UserCreationForm):
     
