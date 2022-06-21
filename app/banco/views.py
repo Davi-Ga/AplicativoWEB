@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from banco.filters import FiltroAgencia
 
 def pagina_inicial(request):
     return render(request,'banco/home.html')
@@ -109,7 +110,7 @@ def alterar_banco(request,banco_id):
     
 #DELETE
 
-def deletar_banco(banco_id):
+def deletar_banco(request,banco_id):
     banco_id=int(banco_id)  
     
     try:
@@ -148,18 +149,22 @@ def adicionar_agencia(request):
 #READ
 def listar_agencia(request):
     agencias_list= Agencia.objects.all()
+    agencias_listf= FiltroAgencia(request.GET,queryset=agencias_list)
     paginator=Paginator(agencias_list,10)
     
     page=request.GET.get('page')
     
     agencias=paginator.get_page(page)
+    
+    
     context={
-        'agencias': agencias
+        'agencias': agencias,
+        'filtro': agencias_listf
     }
     return render(request,'banco/agencia_list.html',context=context)
 
 #UPDATE
-@login_required
+
 def alterar_agencia(request,agencia_id):
     agencia_id=int(agencia_id)
     try:
@@ -178,8 +183,8 @@ def alterar_agencia(request,agencia_id):
     return render(request,'banco/agencia_adicionar.html',context=context)
 
 #DELETE
-@login_required
-def deletar_agencia(agencia_id):
+
+def deletar_agencia(request,agencia_id):
     agencia_id=int(agencia_id)
     try:
         agencias=Agencia.objects.get(id=agencia_id)
