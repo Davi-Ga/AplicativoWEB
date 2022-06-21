@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'banco.apps.BancoConfig',
     'crispy_forms',
     "crispy_bootstrap5",
+    'django_filters',
 
 ]
 
