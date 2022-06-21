@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
     var deleteBtn = $('.btn-danger');
+    var searchBtn = $('#search-btn');
+    var searchForm = $('#search-btn')
   
     $(deleteBtn).on('click',function(e){
       e.preventDefault();
@@ -11,5 +13,9 @@ $(document).ready(function(){
       if(result){
         window.location.href = deleteLink;
       }
+    });
+
+    $(searchBtn).on('click',function(){
+        searchForm.submit();
     });
   });
