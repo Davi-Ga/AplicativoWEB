@@ -7,10 +7,6 @@ TYPE_PHONE =[
     ('1','Celular'),
 ]
 
-TYPE_PERMITIONS=[
-    ('m','Moderador'),
-    ('c','Comum')
-]
 
 class Banco(models.Model):
     
@@ -22,7 +18,7 @@ class Banco(models.Model):
            
     def __str__(self):
         
-        return self.numero+" - "+self.nome 
+        return self.nome 
     
 
 class Agencia(models.Model):
@@ -41,8 +37,4 @@ class Agencia(models.Model):
     
     def __str__(self):
         return self.nome_agencia
-
-    def numero(self,*args,**kwargs):
-        fone=self.cleaned_data.get('fone')
-        fone1=self.cleaned_data.get('fone1')
     
