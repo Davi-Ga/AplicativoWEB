@@ -26,10 +26,11 @@
 }
 
 
-.navbar-brand .bi-house{
+.navbar-brand .fa-house{
     color: #8f9094;
+    
 }
-.navbar-brand .bi-house:hover{
+.navbar-brand .fa-house:hover{
     color: #5ADBDB
 }
 
