@@ -23,7 +23,7 @@ class Banco(models.Model):
 
 class Agencia(models.Model):
     
-    id_banco = models.ForeignKey('Banco',on_delete=models.CASCADE)
+    banco = models.ForeignKey(Banco,on_delete=models.CASCADE,verbose_name='idBanco')
     endereco = models.CharField(max_length=100,null=False)
     fone = models.BigIntegerField(unique=True,blank=True)
     tipo = models.CharField(max_length=1,choices=TYPE_PHONE,blank=True)
