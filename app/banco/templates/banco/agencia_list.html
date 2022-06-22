@@ -3,7 +3,7 @@
 
 
 {% block content %}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static '/css/banco/agencia_banco_list.css' %}">
     <div id="main"> 
@@ -11,10 +11,18 @@
       <div class="row justify-content-center">
         <div class="col-9 search-div">
           <form method="GET" id="search-form">
-            <input class="form-control" type="text" id="search" name="search" placeholder="Digite seu banco aqui">
+            <input class="form-control" type="text" id="searchBanc" name="searchBanc" placeholder="Digite o Banco aqui">
             <i class="fas fa-search" id="search-btn"></i>
           </form>
         </div>
+
+        <div class="col-9 search-div">
+          <form method="GET" id="search-form">
+            <input class="form-control" type="text" id="searchNumAg" name="searchNumAg" placeholder="Digite o Número da Agência aqui">
+            <i class="fas fa-search" id="search-btn"></i>
+          </form>
+        </div>
+        
         <ul>
 
             <table class="table table-dark table-hover table-bordered">
@@ -30,7 +38,7 @@
                     <th scope="col">Agência</th>
                     <th scope="col">Número Agência</th>
                     {% if user.is_authenticated %}
-                    <th scope="col">Ações</th>  
+                        <th scope="col">Ações</th>  
                     {% endif %}
                   </tr>
                 </thead>
@@ -38,7 +46,7 @@
                 {% for Agencia in agencias %}
                     <tr>
                         <th scope="row">{{Agencia.id}}</th>
-                        <td>{{Agencia.id_banco}}</td>
+                        <td>{{Agencia.banco}}</td>
                         <td>{{Agencia.endereco}}</td>
                         <td>{{Agencia.fone}}</td>
                         <td>{{Agencia.tipo}}</td>
