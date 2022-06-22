@@ -17,7 +17,7 @@ class AgenciaForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(AgenciaForm, self).__init__(*args, **kwargs)
-        self.fields['idbanco'].widget.attrs.update({'class': 'form-control'})
+        self.fields['banco'].widget.attrs.update({'class': 'form-control'})
         
     class Meta:
         model = Agencia
