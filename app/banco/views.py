@@ -1,3 +1,4 @@
+from pydoc import render_doc
 from django.shortcuts import redirect, render
 from django import forms
 from banco.forms import AgenciaForm,BancoForm,CadastroUsuarioForm
@@ -9,7 +10,8 @@ from django.contrib.auth import authenticate,login,logout
 def pagina_inicial(request):
     return render(request,'banco/home.html')
 
-
+def pagina_gerenciar(request):
+    return render(request,'usuario/gerenciar.html')
 
 def pagina_login(request):
     if request.user.is_authenticated:
@@ -146,19 +148,24 @@ def adicionar_agencia(request):
 #READ
 def listar_agencia(request):
 
-    search=request.GET.get('search')
+    searchBanc=request.GET.get('searchBanc')
+    searchNumAg=request.GET.get('searchNumAg')
     
-    if search:
-        agencias=Agencia.objects.filter(agencia__icontains=search)
+    if searchNumAg:
+        agencias=Agencia.objects.filter(agencia__icontains=searchNumAg)
     else:
-
-        agencias_list= Agencia.objects.all()
-
-        paginator=Paginator(agencias_list,10)
         
-        page=request.GET.get('page')
-        
-        agencias=paginator.get_page(page)
+        if searchBanc:
+            agencias=Agencia.objects.filter(banco__name=searchBanc)
+        else:
+
+            agencias_list= Agencia.objects.all()
+
+            paginator=Paginator(agencias_list,10)
+            
+            page=request.GET.get('page')
+            
+            agencias=paginator.get_page(page)
         
         
     context={
