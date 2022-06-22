@@ -27,7 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.pagina_inicial, name='paginaInicial'),
     path('adicionar/',include('banco.urls')),
+    
     path('conectar/',views.pagina_login,name='paginaLogin'),
+    path('gerenciar/',views.pagina_gerenciar,name='paginaGerenciar'),
     path('cadastrar/',views.pagina_registro,name='paginaCadastro'),
     path('desconectar/',views.deslogar,name='paginaDesconectar'),
     
