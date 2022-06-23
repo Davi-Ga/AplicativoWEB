@@ -23,6 +23,16 @@ class AgenciaForm(forms.ModelForm):
         model = Agencia
         fields = '__all__'
         
+      
+    def clean_numero(self):
+        telefone=self.cleaned_data.get('fone')
+        telefone1=self.cleaned_data.get('fone1')
+        
+        if telefone == telefone1:
+            raise forms.ValidationError('Os telefones não podem ser iguais')
+        else:
+            return
+        
 class CadastroUsuarioForm(UserCreationForm):
     
     def __init__(self, *args, **kwargs):
